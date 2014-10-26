@@ -28,8 +28,11 @@
 ##
 
 makeCacheMatrix <- function(x = matrix()) {
+      ## initialize invMatrix to NULL
       invMatrix <<- NULL
+      ## invert provided matrix; set invMatrix to inverted matrix
       invMatrix <<- solve(x)
+      ## return initial matrix, since at this point no one cares whether it's been inverted
       origMatrix <<- x
       
 }
@@ -49,10 +52,12 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
       ## Return a matrix that is the inverse of 'x'
       
+      ## if the inverse of the matrix has been computed, grab info from cache
       if(!is.null(invMatrix)) {
             message("getting cached data")
             return(invMatrix)
-      }	
+      }
+      ## if the inverse of the matrix has not been computed, compute and return it
       invMatrix <- solve(x)
       
 }
