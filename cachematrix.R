@@ -1,4 +1,4 @@
-## Function written by Alice Allen
+## Functions written by owlice
 
 
 ## ___________________________________
@@ -19,30 +19,40 @@
 
 
 ## ___________________________________
-## START makeCacheMatrix comments
+## START makeCacheMatrix general comments
 ## 
 ## makeCacheMatrix creates a matrix object that can cache its inverse
 ##
-## END makeCacheMatrix comments
+## END makeCacheMatrix general comments
 ## ___________________________________
 ##
 
 makeCacheMatrix <- function(x = matrix()) {
-
+      invMatrix <<- NULL
+      invMatrix <<- solve(x)
+      origMatrix <<- x
+      
 }
 
 
 ## ___________________________________
-## START cacheSolve comments
+## START cacheSolve general comments
 ## 
 ## cacheSolve tests to see whether the inverse of the matrix object returned
 ## by function makeCacheMatrix has already been computed; if so, it returns
 ## what it has cached. If the inverse has not been computed and the matrix is
 ## unchanged, this function computes, caches, and returns the inverse
 ##
-## END cacheSolve comments
+## END cacheSolve general comments
 ## ___________________________________
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+      ## Return a matrix that is the inverse of 'x'
+      
+      if(!is.null(invMatrix)) {
+            message("getting cached data")
+            return(invMatrix)
+      }	
+      invMatrix <- solve(x)
+      
 }
